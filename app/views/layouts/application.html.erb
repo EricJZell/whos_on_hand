@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WhosOnHand</title>
+  <title>Who's on Hand</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">WhosOnHand</a></h1>
-      </li>
-    </ul>
 
-    <section class="top-bar-section">
-      <ul class="right">
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="menu-text">Who's on Hand</li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
         <%- if current_user -%>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
@@ -23,11 +22,11 @@
           <li><%= link_to 'Sign In', new_user_session_path %></li>
         <%- end -%>
       </ul>
-    </section>
-  </nav>
+    </div>
+  </div>
 
   <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
+    <div class="callout <%= key %>">
       <%= value %>
     </div>
   <%- end -%>
