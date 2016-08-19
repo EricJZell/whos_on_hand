@@ -10,7 +10,7 @@
   <div class="top-bar">
     <div class="top-bar-left">
       <ul class="dropdown menu" data-dropdown-menu>
-        <li class="menu-text">Who's on Hand</li>
+        <li class="menu-text"><%= link_to "Who's on Hand", root_path %></li>
       </ul>
     </div>
     <div class="top-bar-right">
@@ -31,7 +31,9 @@
     </div>
   <%- end -%>
 
-  <%= yield %>
+  <div class="row">
+    <%= yield %>
+  </div>
 
   <%= javascript_include_tag 'application' %>
   <%= yield :extra_footer %>

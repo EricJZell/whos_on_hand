@@ -1,4 +1,17 @@
-<p>
-  Modify me in `app/views/homes/index.html.erb` or change the root directive in
-  `config/routes.rb`
+<h1 class="text-center">
+  Welcome to Who's on Hand
+</h1>
+<p class="text-center welcome">
+  Who's on Hand is an application to aide in the organization and coordination
+  of volunteer organizations. It can track the status of available volunteers,
+  with thier contact information and credentials. 
 </p>
+<h4 class="text-center">
+  <% if current_user %>
+    <%= link_to "View your organization's volunteers on hand", user_path(current_user) %>
+  <% else %>
+    <%= link_to 'Sign In', new_user_session_path %>
+    |
+    <%= link_to 'Sign Up', new_user_registration_path %>
+  <% end %>
+</h4>
