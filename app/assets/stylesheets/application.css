@@ -17,10 +17,9 @@
  */
 
 .welcome {
-  background-color: #ebebeb;
+  background-color: #f0f0f0;
   padding: 10px;
   margin: 15px 30px;
   box-shadow: 5px 5px 5px $shadow-color;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-radius: 5px;
 }
