@@ -3,9 +3,9 @@ class Api::V1::VolunteersController < ApplicationController
   before_filter :parse_request, :authenticate_user_from_token!
 
   def report_status
-    detected_ips = @json['detected_ip_addresses']
-    detected_ips.each do |ip|
-      vol = Volunteer.find_by_ip_address(ip)
+    detected_macs = @payload['detected_macs']
+    detected_macs.each do |mac|
+      vol = Volunteer.find_by_mac_address(mac)
       if vol
         vol.last_detected = Time.now
         if !vol.save!
@@ -14,19 +14,19 @@ class Api::V1::VolunteersController < ApplicationController
         end
       end
     end
-    render json: {processed_ip_addresses: detected_ips}, status: 200
+    render json: {processed_mac_addresses: detected_macs}, status: 200
   end
 
 private
 
    def authenticate_user_from_token!
-     if @json['token'] != "Hello"
+     if @payload['token'] != "845e2nd"
        render nothing: true, status: :unauthorized
      end
    end
 
    def parse_request
-     @json = JSON.parse(request.body.read)
+     @payload = JSON.parse(request.body.read)
    end
 
 end
