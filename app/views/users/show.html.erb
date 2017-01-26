@@ -1,8 +1,34 @@
-<h1><%= @user.name %></h1>
-<h3>Volunteer Status</h3>
-<ul>
-  <% @user.volunteers.each do |vol| %>
-    <li>
-      <%= "#{vol.name} last detected at #{vol.last_detected}" %>
-    </li>
-  <% end %>
+
+<h1><%= "#{@user.name} Personnel Satus Details:" %></h1>
+<h5><%= link_to("Add a new volunteer", new_user_volunteer_path(@user)) %></h5>
+
+<div id="volunteer_status_table"
+  <h5><%= "#{@user.name} Volunteers:" %></h5>
+  <table class="volunteers_table">
+    <thead>
+      <tr>
+        <th width="20%">Name</th>
+        <th width="30%">Credentials</th>
+        <th width="20%">Phone Number</th>
+        <th width="20%">Last Active</th>
+        <th width="10%">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="volunteers_table">
+      <% @user.volunteers.each do |vol| %>
+        <tr id="<%= dom_id(vol)%>">
+          <td><%= vol.name %></td>
+          <td><%= vol.credentials %></td>
+          <td><%= vol.phone_number %></td>
+          <td><%= vol.readable_last_detected %></td>
+          <td>
+            <%= link_to("Delete", user_volunteer_path(@user, vol), method: :delete,
+                data: { confirm: 'Are you sure you want to delete this volunteer?' }) %>
+              |
+            <%= link_to("Edit", edit_user_volunteer_path(@user, vol)) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

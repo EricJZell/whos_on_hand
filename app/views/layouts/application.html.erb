@@ -32,7 +32,9 @@
   <%- end -%>
 
   <div class="row">
-    <%= yield %>
+    <div class="columns small-12">
+      <%= yield %>
+    </div>
   </div>
 
   <%= javascript_include_tag 'application' %>
