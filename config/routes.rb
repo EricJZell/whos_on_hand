@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'homes#index'
   devise_for :users, controllers: { registrations: :registrations }
   resources :users, only: [:index, :show] do
-    resources :volunteers, except: [:index]
+    resources :volunteers
   end
 
   namespace :api do

@@ -1,5 +1,9 @@
 class VolunteersController < ApplicationController
 
+  def show
+    @volunteer = Volunteer.find(params[:id])
+  end
+
   def new
     @user = User.find(params[:user_id])
     @volunteer = @user.volunteers.new

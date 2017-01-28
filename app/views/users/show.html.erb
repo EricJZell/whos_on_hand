@@ -17,7 +17,7 @@
     <tbody class="volunteers_table">
       <% @user.volunteers.each do |vol| %>
         <tr id="<%= dom_id(vol)%>">
-          <td><%= vol.name %></td>
+          <td><%= link_to(vol.name, user_volunteer_path(@user, vol)) %></td>
           <td><%= vol.credentials %></td>
           <td><%= vol.phone_number %></td>
           <td><%= vol.readable_last_detected %></td>
